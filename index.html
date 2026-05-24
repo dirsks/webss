@@ -351,17 +351,17 @@
             <div class="menu-group">
                 <div class="menu-title">Getting Started</div>
                 <ul class="menu-links">
-                    <li><a href="#carregar"><i class="fa-solid fa-download"></i> How to Load</a></li>
+                    <li><a href="#load"><i class="fa-solid fa-download"></i> How to Load</a></li>
                     <li><a href="#config"><i class="fa-solid fa-sliders"></i> Customization</a></li>
-                    <li><a href="#janela"><i class="fa-solid fa-window-maximize"></i> Create Window</a></li>
+                    <li><a href="#window"><i class="fa-solid fa-window-maximize"></i> Create Window</a></li>
                 </ul>
             </div>
 
             <div class="menu-group">
                 <div class="menu-title">UI Elements</div>
                 <ul class="menu-links">
-                    <li><a href="#abas"><i class="fa-solid fa-layer-group"></i> Create Tabs</a></li>
-                    <li><a href="#botoes"><i class="fa-solid fa-circle-play"></i> Buttons</a></li>
+                    <li><a href="#tabs"><i class="fa-solid fa-layer-group"></i> Create Tabs</a></li>
+                    <li><a href="#buttons"><i class="fa-solid fa-circle-play"></i> Buttons</a></li>
                     <li><a href="#toggles"><i class="fa-solid fa-toggle-on"></i> Toggles</a></li>
                     <li><a href="#sliders"><i class="fa-solid fa-sliders"></i> Sliders</a></li>
                     <li><a href="#keybinds"><i class="fa-solid fa-keyboard"></i> Keybindings</a></li>
@@ -372,7 +372,7 @@
         </aside>
 
         <main>
-            <section id="carregar">
+            <section id="load">
                 <h1>How to Load the Library</h1>
                 <p>Before loading the Kryzium admin panel, make sure the Roblox Studio environment is fully loaded. Call the module using the native <code class="badge">require()</code> function.</p>
                 <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>if not game:IsLoaded() then
@@ -402,7 +402,7 @@ local Kryzium = loadstring(Game:HttpGet'https://kryzium.vercel.app/raw/script')(
 })</code></pre>
             </section>
 
-            <section id="janela">
+            <section id="window">
                 <h2>Creating the Main Window</h2>
                 <p>The <code class="badge">MakeWindow</code> function generates the base structure. This is where you set author information, Discord invites, and enable the internal notification system.</p>
                 <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>local window = Kryzium:MakeWindow({
@@ -415,14 +415,14 @@ local Kryzium = loadstring(Game:HttpGet'https://kryzium.vercel.app/raw/script')(
 })</code></pre>
             </section>
 
-            <section id="abas">
+            <section id="tabs">
                 <h1>Creating Tabs</h1>
                 <p>Tabs divide your script into categories (e.g. Automation, Combat, Teleports). You can assign numeric icons or keep the default value.</p>
                 <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>local tab = window:MakeTab({Title = 'Main', Image = 'Default'})
 local tab2 = window:MakeTab({Title = 'Farming', Image = 16898613509})</code></pre>
             </section>
 
-            <section id="botoes">
+            <section id="buttons">
                 <h2>Buttons</h2>
                 <p>Perfect for executing instant actions through a callback function.</p>
                 <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>tab:MakeButton({
