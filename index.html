@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kryzium UI | Easy to use, easy to create</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* DARK & RED THEME */
+        :root {
+            --bg-main: #050505;       
+            --bg-sidebar: #0d0d0d;    
+            --bg-card: #121212;       
+            --accent-red: #ff0000;    
+            --accent-dim: #990000;    
+            --text-main: #f8fafc;     
+            --text-muted: #94a3b8;    
+            --border-red: rgba(255, 0, 0, 0.2);
+            --glow-red: rgba(255, 0, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Urbanist', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* -----------------------------------------
+           LANDING / HERO SECTION
+        ----------------------------------------- */
+        .hero-section {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.08) 0%, transparent 50%);
+            overflow: hidden;
+        }
+
+        .hero-left {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            position: relative;
+            color: var(--text-main);
+        }
+
+        .hero-title span {
+            color: var(--accent-red);
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .hero-title::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-red);
+            filter: blur(150px);
+            opacity: 0.15;
+            top: -50px;
+            left: -50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-red);
+            color: #ffffff;
+            border: 1px solid var(--accent-red);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: #d60000;
+            box-shadow: 0 0 25px var(--glow-red);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-red);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 0, 0, 0.05);
+            border-color: var(--accent-red);
+            transform: translateY(-2px);
+        }
+
+        .hero-right {
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .preview-img {
+            max-width: 500px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7), 0 0 30px rgba(255, 0, 0, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.1);
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+        }
+
+        .preview-img:hover {
+            animation: floating 3s ease-in-out infinite;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.8), 0 0 40px rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+
+        /* -----------------------------------------
+           DOCUMENTATION LAYOUT
+        ----------------------------------------- */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+            border-top: 1px solid var(--border-red);
+        }
+
+        aside {
+            width: 300px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border-red);
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            padding: 2.5rem 1.5rem;
+            overflow-y: auto;
+        }
+
+        .sidebar-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-logo span {
+            color: var(--accent-red);
+        }
+
+        .menu-group { margin-bottom: 2rem; }
+        .menu-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            padding-left: 0.75rem;
+        }
+
+        .menu-links { list-style: none; }
+        .menu-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.6rem 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .menu-links a:hover {
+            background-color: rgba(255, 0, 0, 0.05);
+            color: var(--text-main);
+            border-left: 3px solid var(--accent-red);
+            padding-left: calc(0.75rem - 3px);
+        }
+
+        main {
+            padding: 4rem 5rem;
+            max-width: 1100px;
+            width: calc(100vw - 300px);
+        }
+
+        section {
+            margin-bottom: 5rem;
+            scroll-margin-top: 4rem;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-red);
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            border-left: 4px solid var(--accent-red);
+            padding-left: 15px;
+        }
+
+        p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            background-color: rgba(255, 0, 0, 0.15);
+            color: var(--accent-red);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        pre {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-red);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            position: relative;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            color: #ff5555;
+            line-height: 1.5;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: #1a1a1a;
+            border: 1px solid var(--border-red);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent-red);
+            color: white;
+            box-shadow: 0 0 10px var(--glow-red);
+        }
+
+        footer {
+            margin-top: 8rem;
+            border-top: 1px solid var(--border-red);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <div class="hero-left">
+            <h1 class="hero-title">Easy to use,<br><span>easy to create.</span></h1>
+            <p class="hero-subtitle">Kryzium is a high-performance UI Library for ROBLOX. Build beautiful, functional, and fully customizable menus and script panels in minutes.</p>
+            <div class="cta-container">
+                <a href="#docs-start" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Get Started</a>
+                <a href="#docs-start" class="btn btn-secondary"><i class="fa-regular fa-file-lines"></i> View Docs</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="Resources/Preview.png" alt="Interface Preview" class="preview-img">
+        </div>
+    </header>
+
+    <div id="docs-start"></div>
+
+    <div class="app-container">
+        <aside>
+            <div class="sidebar-logo"><img src="Resources/Crystal.png" alt="" width="32" height="32"> Kryzium <span>UI</span></div>
+            
+            <div class="menu-group">
+                <div class="menu-title">Getting Started</div>
+                <ul class="menu-links">
+                    <li><a href="#carregar"><i class="fa-solid fa-download"></i> How to Load</a></li>
+                    <li><a href="#config"><i class="fa-solid fa-sliders"></i> Customization</a></li>
+                    <li><a href="#janela"><i class="fa-solid fa-window-maximize"></i> Create Window</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-title">UI Elements</div>
+                <ul class="menu-links">
+                    <li><a href="#abas"><i class="fa-solid fa-layer-group"></i> Create Tabs</a></li>
+                    <li><a href="#botoes"><i class="fa-solid fa-circle-play"></i> Buttons</a></li>
+                    <li><a href="#toggles"><i class="fa-solid fa-toggle-on"></i> Toggles</a></li>
+                    <li><a href="#sliders"><i class="fa-solid fa-sliders"></i> Sliders</a></li>
+                    <li><a href="#keybinds"><i class="fa-solid fa-keyboard"></i> Keybindings</a></li>
+                    <li><a href="#colorpicker"><i class="fa-solid fa-palette"></i> Color Picker</a></li>
+                    <li><a href="#warnings"><i class="fa-solid fa-triangle-exclamation"></i> Warnings</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main>
+            <section id="carregar">
+                <h1>How to Load the Library</h1>
+                <p>Before loading the Kryzium admin panel, make sure the Roblox Studio environment is fully loaded. Call the module using the native <code class="badge">require()</code> function.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+local Kryzium = require(script.KryziumAdminPanelUi);</code></pre>
+            </section>
+
+            <section id="config">
+                <h2>Initial Customization (Optional)</h2>
+                <p>The <code class="badge">Kryzium:init()</code> method lets you define the visual palette and gradients of the menu before rendering it on the player's screen.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>Kryzium:init({
+    Gradient = false,
+    GradientColor = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)), -- Red
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 255))  -- Blue
+    },
+    GradientRotation = 0,
+    CustomFont = false,
+    Font = Enum.Font.SourceSansBold,
+    CustomBGColor = false,
+    BackgroundColor = Color3.fromRGB(40, 40, 40),
+    CustomIntro = true,
+    IntroColor = Color3.fromRGB(0, 0, 0),
+    IntroTransparency = 0.4
+})</code></pre>
+            </section>
+
+            <section id="janela">
+                <h2>Creating the Main Window</h2>
+                <p>The <code class="badge">MakeWindow</code> function generates the base structure. This is where you set author information, Discord invites, and enable the internal notification system.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>local window = Kryzium:MakeWindow({
+    Image = 'Default', -- Insert your custom icon Asset ID here
+    Name = 'Kryzium UI',
+    DiscordLink = 'https://discord.gg/aA123',
+    Author = 'dircs',
+    Discord = false,      -- Enables Discord pop-up
+    Notifications = true -- Activates the global alert system
+})</code></pre>
+            </section>
+
+            <section id="abas">
+                <h1>Creating Tabs</h1>
+                <p>Tabs divide your script into categories (e.g. Automation, Combat, Teleports). You can assign numeric icons or keep the default value.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>local tab = window:MakeTab({Title = 'Main', Image = 'Default'})
+local tab2 = window:MakeTab({Title = 'Farming', Image = 16898613509})</code></pre>
+            </section>
+
+            <section id="botoes">
+                <h2>Buttons</h2>
+                <p>Perfect for executing instant actions through a callback function.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>tab:MakeButton({
+    Title = 'Version',
+    Callback = function() 
+        print(game.PlaceId)
+    end
+})</code></pre>
+            </section>
+
+            <section id="toggles">
+                <h2>Toggles</h2>
+                <p>Used to enable or disable continuous functions (loops). The <code class="badge">Value</code> parameter returns a boolean (<code class="badge">true</code> or <code class="badge">false</code>).</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>tab2:MakeToggle({
+    Title = 'Auto Farm',
+    Toggle = false, -- Default initial state
+    Callback = function(Value)
+        print('Current state:', Value)
+    end
+})</code></pre>
+            </section>
+
+            <section id="sliders">
+                <h2>Sliders</h2>
+                <p>Ideal for setups that require range accuracy, such as walk speed (<code class="badge">WalkSpeed</code>) or jump power.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>tab:MakeSlider({
+    Title = 'Slider',
+    Value = 0,
+    MinValue = 0,
+    MaxValue = 100,
+    Callback = function(Value)
+        print(Value)
+    end
+})</code></pre>
+            </section>
+
+            <section id="keybinds">
+                <h2>Keybindings</h2>
+                <p>Binds a physical key to trigger the programmed function whenever it is pressed in-game.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>tab:MakeKeybind({
+    Title = 'Keybind',
+    Keybind = Enum.KeyCode.F,
+    Callback = function(Value)
+        print('Key Pressed:', Value)
+    end
+})</code></pre>
+            </section>
+
+            <section id="colorpicker">
+                <h2>Color Picker</h2>
+                <p>Provides a graphical color palette interface for the user to change the tones of tracers or ESP boxes.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>tab:MakeColourPicker({
+    Title = 'Color Picker',
+    Default = Color3.fromRGB(85, 0, 0),
+    Transparency = 0,
+    Flag = 'ESPColor',
+    Callback = function(Color)
+        -- Returns the selected Color3 object
+    end
+})</code></pre>
+            </section>
+
+            <section id="warnings">
+                <h2>Warnings</h2>
+                <p>Creates a textual or informational notice pinned at the top or body of the interface tab.</p>
+                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>tab:MakeWarning({
+    Title = 'A warning!',
+    Container = 'Like!'
+})</code></pre>
+            </section>
+
+            <footer>
+                <p>Kryzium UI Library &bull; Developed by <strong>dircs</strong></p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling;
+            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                button.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+                button.style.backgroundColor = '#ff0000';
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
+                    button.style.backgroundColor = '#1a1a1a';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
