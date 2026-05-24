@@ -410,8 +410,15 @@ local Kryzium = loadstring(Game:HttpGet'https://kryzium.vercel.app/raw/script')(
             <section id="tabs">
                 <h1>Creating Tabs</h1>
                 <p>Tabs divide your script into categories (e.g. Automation, Combat, Teleports). You can assign numeric icons or keep the default value.</p>
-                <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>local tab = window:MakeTab({Title = 'Main', Image = 'Default'})
-local tab2 = window:MakeTab({Title = 'Farming', Image = 16898613509})</code></pre>
+                <pre>
+                <button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button>
+                <code>
+                    local tab = window:MakeTab({Title = 'Main', Image = 'Default'}) --Lucide Icons coming soon
+                </code>
+<code>
+                    local tab = window:MakeTab({Title = 'Main', Image = 16898613509}) --Custom Tab Image ID
+                </code>
+            </pre>
             </section>
 
             <section id="buttons">
@@ -429,7 +436,7 @@ local tab2 = window:MakeTab({Title = 'Farming', Image = 16898613509})</code></pr
                 <h2>Toggles</h2>
                 <p>Used to enable or disable continuous functions (loops). The <code class="badge">Value</code> parameter returns a boolean (<code class="badge">true</code> or <code class="badge">false</code>).</p>
                 <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fa-regular fa-copy"></i> Copy</button><code>tab2:MakeToggle({
-    Title = 'Auto Farm',
+    Title = 'Toggle',
     Toggle = false, -- Default initial state
     Callback = function(Value)
         print('Current state:', Value)
@@ -470,7 +477,7 @@ local tab2 = window:MakeTab({Title = 'Farming', Image = 16898613509})</code></pr
     Title = 'Color Picker',
     Default = Color3.fromRGB(85, 0, 0),
     Transparency = 0,
-    Flag = 'ESPColor',
+    Flag = 'Color3',
     Callback = function(Color)
         -- Returns the selected Color3 object
     end
